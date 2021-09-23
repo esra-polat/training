@@ -1,0 +1,263 @@
+-- SELECT * FROM film WHERE length < 120
+-- SELECT * FROM film WHERE length > 120
+-- SELECT * FROM film WHERE length <= 120
+-- SELECT * FROM film WHERE length >= 120
+-- SELECT * FROM film WHERE length = 120
+
+-- SELECT * FROM film WHERE length <> 120 -- not equal
+-- SELECT * FROM film WHERE length != 120 -- not equal
+
+-- SELECT title, length FROM film WHERE length >= 90 AND length <= 120
+-- SELECT title, length FROM film WHERE length BETWEEN 90 AND 120
+
+-- SELECT title, length FROM film WHERE length < 90 OR length > 120
+-- SELECT title, length FROM film WHERE length NOT BETWEEN 90 AND 120
+
+-- SELECT title, description FROM film
+-- SELECT * FROM film WHERE length > 60 AND length < 75
+-- SELECT * FROM film WHERE rental_rate = 0.99 AND replacement_cost = 12.99 OR replacement_cost = 28.99
+-- SELECT last_name FROM customer WHERE first_name = 'Mary'
+-- SELECT * FROM film WHERE NOT (length > 50 AND rental_rate = 2.99 OR rental_rate = 4.99)
+
+-- SELECT rental_rate, replacement_cost FROM film
+-- WHERE (rental_rate BETWEEN 2 AND 4) AND (replacement_cost BETWEEN 10 AND 20)
+
+-- SELECT * FROM film WHERE length IN(40,50,60)
+-- SELECT * FROM film WHERE length = 40 OR length = 50 OR length = 60 
+
+-- SELECT * FROM film WHERE replacement_cost NOT IN(10.99, 12.99, 16.99)
+
+-- SELECT * FROM film WHERE replacement_cost BETWEEN 12.99 AND 16.99
+-- SELECT first_name, last_name FROM actor WHERE first_name IN('Penelope', 'Nick', 'Ed')
+-- SELECT * FROM film WHERE rental_rate IN(0.99, 2.99, 4.99) AND replacement_cost IN(12.99, 15.99, 28.99)
+
+-- SELECT * FROM customer WHERE first_name LIKE 'M%y'
+-- SELECT * FROM customer WHERE first_name LIKE 'A%y' OR last_name LIKE 'A%'
+-- SELECT * FROM customer WHERE email ILIKE 'A%g'
+-- SELECT * FROM customer WHERE first_name LIKE 'J_an' -- tek karakter icin yer tutucu
+
+-- SELECT country FROM country WHERE country ~~ 'A%a'
+-- SELECT country FROM country WHERE country ~~ '%_____n'
+-- SELECT title FROM film WHERE title ~~* '%t%t%t%t%'
+-- SELECT * FROM film WHERE length > 90 AND title ~~ 'C%' AND rental_rate = 2.99
+
+-- SELECT DISTINCT rental_rate FROM film
+
+-- SELECT COUNT(*) FROM film WHERE length > 90 AND title ~~ 'C%' AND rental_rate = 2.99
+-- SELECT COUNT (DISTINCT rental_rate) FROM film
+
+-- SELECT DISTINCT replacement_cost FROM film
+-- SELECT COUNT (DISTINCT replacement_cost) FROM film
+-- SELECT COUNT(*) FROM film WHERE title ~~ 'T%' AND rating = 'G'
+-- SELECT COUNT(*) FROM country WHERE country ~~* '_____'
+-- SELECT COUNT(*) FROM city WHERE city ~~* '%r'
+
+-- SELECT * FROM film WHERE (title ILIKE ('%a%a%')) AND (length > 100) AND (replacement_cost > 15 AND replacement_cost < 25) AND (rental_rate = 2.99)
+-- SELECT COUNT(DISTINCT length) FROM film WHERE title ILIKE 't%'
+
+-- SELECT title, rental_rate, length FROM film ORDER BY rental_rate ASC, length DESC
+-- SELECT title, rental_rate, length FROM film WHERE title ~~ 'A%' ORDER BY rental_rate ASC, length DESC
+
+-- SELECT * FROM film WHERE rental_rate = 4.99 ORDER BY length LIMIT 10 
+-- SELECT * FROM film WHERE rental_rate = 4.99 ORDER BY length OFFSET 5 LIMIT 10 
+-- SELECT * FROM film WHERE rental_rate = 4.99 ORDER BY length LIMIT 10 OFFSET 5 -- LIMIT OFFSET yerlerinin degismesi farketmez
+
+-- SELECT * FROM film WHERE title ~~ '%n' ORDER BY DESC length LIMIT 5
+-- SELECT * FROM film WHERE title ~~ '%n' ORDER BY length LIMIT 5 OFFSET 5
+-- SELECT * FROM customer WHERE store_id = 1 ORDER BY last_name LIMIT 4
+
+-- SELECT MAX(replacement_cost) FROM film
+-- SELECT MIN(replacement_cost) FROM film
+-- SELECT AVG(length) FROM film
+-- SELECT ROUND(AVG(length),3) FROM film
+-- SELECT SUM(rental_rate) FROM film
+
+-- SELECT AVG(rental_rate) FROM film
+-- SELECT SUM(*) FROM film WHERE title ~~ 'C%'
+-- SELECT MAX(length) FROM film WHERE rental_rate = 0.99
+-- SELECT COUNT(DISTINCT(replacement_cost)) FROM film WHERE length > 150
+
+-- SELECT rental_rate, MAX(length) FROM film GROUP BY rental_rate
+-- SELECT rental_rate, COUNT(*) FROM film GROUP BY rental_rate
+-- SELECT replacement_cost, rental_rate, MIN(length) FROM film GROUP BY replacement_cost, rental_rate
+
+-- SELECT rental_rate, COUNT(*) FROM film GROUP BY rental_rate HAVING COUNT(*) > 325
+-- SELECT rental_rate, COUNT(*) FROM film WHERE rental_rate != 2.99 GROUP BY rental_rate -- iki sorgu ayni sonucu versede ayni islem degil 
+
+-- SELECT rating, COUNT(*) FROM film GROUP BY rating
+-- SELECT replacement_cost, COUNT(*) FROM film GROUP BY replacement_cost HAVING COUNT(*) > 50 
+-- SELECT store_id, COUNT(*) FROM customer GROUP BY store_id
+-- SELECT country_id, COUNT(*) FROM city GROUP BY country_id ORDER BY COUNT(*) DESC LIMIT 1
+
+-- SELECT first_name AS isim, last_name AS soyisim FROM actor
+-- SELECT first_name isim, last_name soyisim FROM actor
+-- SELECT first_name "isim test", last_name soyisim FROM actor
+-- SELECT CONCAT(first_name, ' ', last_name) AS "isim ve soyisim" FROM actor
+
+-- CREATE TABLE author(
+-- id SERIAL PRIMARY KEY,
+-- first_name VARCHAR(50) NOT NULL,
+-- last_name VARCHAR(50) NOT NULL,
+-- email VARCHAR(100),
+-- birthday DATE)
+
+-- INSERT INTO author (first_name, last_name, email, birthday)
+-- VALUES 
+-- ('Haruki', 'Murakami', 'haruki@murakami.com', '1948-11-07'),
+-- ('Sabahattin', 'Ali', 'sabahattin@ali.com', '1914-07-11'),
+-- ('Orhan', 'Pamuk', 'orhan@pamuk.com', '1950-04-14'),
+-- ('Halide Edip', 'Adivar', 'halideedip@adivar.com', '1884-07-11'),
+-- ('Zygmunt', 'Bauman', 'zygmunt@bauman.com', '1948-07-12')
+
+-- SELECT * FROM author
+
+-- CREATE TABLE author2(LIKE author)
+-- SELECT * FROM author2
+
+-- INSERT INTO author2
+-- SELECT * FROM author WHERE first_name = 'Sabahattin'
+
+-- CREATE TABLE author3 AS SELECT * FROM author
+-- SELECT * FROM author3
+
+-- DROP TABLE author4
+-- DROP TABLE IF EXISTS author4
+-- DROP TABLE IF EXISTS author3
+
+-- SELECT * FROM author
+
+-- UPDATE author SET first_name = 'Esra', last_name = 'Polat', email = 'esra@polat.com', birthday = '1994-01-25' WHERE id = 10
+-- UPDATE author SET last_name = 'POLAT' WHERE id = 10 RETURNING *
+
+-- DELETE FROM author WHERE id = 6
+-- DELETE FROM author WHERE id > 11 RETURNING *
+
+-- CREATE TABLE employee ( id INTEGER, name VARCHAR(50), birthday DATE, email VARCHAR(100) )
+-- SELECT * FROM employee
+
+-- UPDATE employee SET id = 0 WHERE id = 1
+-- UPDATE employee SET name = 'esra' WHERE id = 0
+-- UPDATE employee SET birthday = '2000-01-01' WHERE name = 'esra'
+-- UPDATE employee SET email = 'esra@polat.com' WHERE name = 'esra'
+
+-- DELETE FROM employee WHERE id = 3 RETURNING *
+-- DELETE FROM employee WHERE name = 'Gullick' RETURNING *
+-- DELETE FROM employee WHERE birthday = null RETURNING *
+-- DELETE FROM employee WHERE email = 'mlugtona@ft.com' RETURNING *
+
+-- CREATE TABLE book (
+-- 	id SERIAL PRIMARY KEY, 
+-- 	title VARCHAR(100) NOT NULL, 
+-- 	page_number INTEGER NOT NULL,
+-- 	author_id INTEGER REFERENCES author(id)
+-- )
+
+-- SELECT title, email FROM book
+-- JOIN author ON author.id = book.author_id
+-- WHERE author_id =  1
+
+-- CREATE TABLE test (
+-- 	id SERIAL PRIMARY KEY, 
+-- 	title VARCHAR(100), 
+-- 	page_number INTEGER )
+	
+-- ALTER TABLE test 
+-- ALTER COLUMN title
+-- SET NOT NULL
+
+-- ALTER TABLE test
+-- ADD UNIQUE(id)
+	
+-- CREATE TABLE test1(
+-- 	id SERIAL PRIMARY KEY,
+-- 	first_name VARCHAR(50) NOT NULL,
+-- 	last_name VARCHAR(50) NOT NULL,
+-- 	email VARCHAR(100) UNIQUE,
+--  	birthday DATE )
+
+-- CREATE TABLE products(
+-- no INTEGER,
+-- name TEXT,
+-- price NUMERIC CHECK(price>0),
+-- discount NUMERIC CHECK(discount>0),
+-- CHECK(price>discount)
+-- )
+
+-- SELECT title, first_name, last_name FROM book
+-- INNER JOIN author ON book.author_id = author.id
+
+-- SELECT book.title, author.first_name, author.last_name FROM book
+-- INNER JOIN author ON book.author_id = author.id
+
+-- SELECT city, country FROM city 
+-- INNER JOIN country ON city.country_id = country.country_id
+
+-- SELECT payment_id, first_name, last_name FROM customer
+-- INNER JOIN payment ON customer.customer_id = payment.customer_id
+
+-- SELECT rental_id, first_name, last_name FROM customer
+-- INNER JOIN rental ON rental.customer_id = customer.customer_id
+
+-- SELECT author.first_name, author.last_name, book.title FROM author
+-- LEFT JOIN book ON author.id = book.author_id
+
+-- SELECT city, country FROM city LEFT JOIN country ON city.country_id = country.country_id
+-- SELECT payment_id, first_name, last_name FROM payment RIGHT JOIN customer ON customer.customer_id = payment.customer_id
+-- SELECT rental_id, first_name, last_name FROM customer FULL JOIN rental ON customer.customer_id = rental.customer_id 
+
+-- (SELECT * FROM book ORDER BY page_number DESC LIMIT 5)
+-- UNION
+-- (SELECT * FROM book ORDER BY title LIMIT 5)
+
+-- (SELECT * FROM book ORDER BY page_number DESC LIMIT 5)
+-- UNION ALL
+-- (SELECT * FROM book ORDER BY title LIMIT 5)
+
+-- (SELECT first_name FROM actor) UNION (SELECT first_name FROM customer)
+-- (SELECT first_name FROM actor) INTERSECT (SELECT first_name FROM customer)
+-- (SELECT first_name FROM actor) EXCEPT (SELECT first_name FROM customer)
+-- (SELECT first_name FROM actor) UNION ALL (SELECT first_name FROM customer)
+-- (SELECT first_name FROM actor) EXCEPT ALL (SELECT first_name FROM customer)
+
+-- SELECT * FROM book WHERE page_number > (SELECT page_number FROM book WHERE title = 'Benitoa')
+
+-- SELECT title, page_number, (SELECT MAX(page_number) FROM book)
+-- FROM book
+-- WHERE page_number > (SELECT page_number FROM book WHERE title = 'Benitoa')
+
+-- SELECT first_name, last_name FROM author
+-- WHERE id < ANY
+-- (SELECT id FROM book 
+-- WHERE title = 'Giant Calliergon Moss' OR title = 'Graceful Necklace Fern')
+
+-- SELECT COUNT(*) FROM film WHERE length > (SELECT AVG(length) FROM film)
+-- SELECT COUNT(*) FROM film WHERE rental_rate = (SELECT MAX(rental_rate) FROM film)
+-- SELECT COUNT(*) FROM film WHERE rental_rate = (SELECT MIN(rental_rate) FROM film) AND replacement_cost = (SELECT MIN(replacement_cost) FROM film)
+
+-- SELECT first_name, last_name,
+-- (SELECT COUNT(*) FROM payment 
+--  WHERE payment.customer_id = customer.customer_id) as numberOfpayment 
+-- FROM customer ORDER BY numberOfpayment DESC LIMIT 10
+
+-- SELECT COUNT(*) FROM film 
+-- WHERE title ILIKE '%e%e%e%e%'
+
+-- SELECT COUNT(*), category.name FROM category 
+-- JOIN film_category ON category.category_id = film_category.category_id 
+-- JOIN film ON film.film_id = film_category.film_id 
+-- GROUP BY category.name
+
+-- SELECT rating, COUNT(*) FROM film GROUP BY rating ORDER BY COUNT(*) DESC LIMIT 1
+
+-- SELECT title, length, replacement_cost FROM film
+-- WHERE title LIKE 'K%'
+-- ORDER BY length DESC, replacement_cost ASC LIMIT 3
+
+-- SELECT customer.first_name, COUNT(*) FROM customer
+-- JOIN payment ON customer.customer_id = payment.customer_id
+-- GROUP BY customer.first_name ORDER BY COUNT(*) DESC LIMIT 1
+
+-- SELECT SUM(amount), customer.first_name, customer.last_name FROM customer
+-- JOIN payment ON customer.customer_id = payment.customer_id
+-- GROUP BY payment.customer_id, customer.first_name, customer.last_name 
+-- ORDER BY SUM(amount) DESC LIMIT 1
