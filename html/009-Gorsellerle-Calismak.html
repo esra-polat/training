@@ -15,3 +15,67 @@
   src="https://assets.ubuntu.com/v1/25363584-Ubuntu-Dell-AI%3AML.svg"
   alt=""
 />
+
+
+<!-- lorem image -->
+<!-- 
+<img src="resim.jpg" width="300" />
+<img src="resim.jpg" height="400" />
+<img src="resim.jpg" width="300" height="600" />
+<img src="resim.jpg" height="100%" />
+
+<img src="resim.jpg" border="3" />
+
+<img src="resim.jpg" align="right" />
+
+<a href="default.asp">
+  <img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;">
+</a>
+
+<!-- map ve area
+
+Resimlerinize hyperlink atamanız durumunda resmin tüm alanı link alanı haline dönüşecektir. Resmin herhangi bir yerine tıklanılması durumunda resim sizi tanımlanan bağlantıya gönderecektir. <img> etiketleri için kullanılan <map> ve <area> etiketleri ile resmin içindeki koordinatlarla belirlediğimiz bir alanı sadece link haline getirebiliriz. Eklediğimiz <area> etiketi kadar belirlenen alanı bir resim üzerinden birçok bağlantıya link verebiliriz.
+
+Örneğin Instagram'da bazı satıcılarda gördüğünüz bir insan fotoğraf üzerinde pantolon ve ayakkabının ürün linklerini ayrı ayrı vermek isterseniz kullanabilirsiniz. -->
+
+<html>
+<body>
+<img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+
+<map name="workmap">
+ <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+ <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+ <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
+</map>
+</body>
+</html>
+
+<!-- onload Event'i Kullanımı
+
+Bu olay resim yüklenmesi tamamlandığında çalışacak fonksiyonu belirler. Herhangi bir nedenle resim yüklenemezse ya da belirtilen adreste resim yoksa fonksiyon çalışmaz. Aşağıdaki örnekte resim yüklenmesi tamamlandığında resimYuklendi() fonksiyonu çalışacak ve ekrana Resim Yüklendi. uyarısı JavaScript tarafından bastırılacak. Bu konuyu ileride çok daha detaylı göreceğiz. -->
+
+<html>
+    <body>
+        <img src="resim.jpg" onload="resimYuklendi()" />
+    </body>
+    
+    <script>
+        function resimYuklendi(){
+            alert("Resim yüklendi.");
+        }
+    </script>
+</html>
+
+<!-- picture Elementi ile Kullanım
+
+HTML5 ile gelen picture elementi web sayfamızda responsive imageler kullanmamız konusunda büyük kolaylıklar sağlıyor. Bir tane img ve birden fazla source içerebilir. picture tagi ekran boyutlarına göre birden çok source kulllanmamızı sağlar bu sayede ekran boyutu değiştikçe farklı image'leri kullanabilirsiniz.
+
+Örnek: Burada ekran genişliğinin 800 pikselden küçük olduğu durumlarda başka diğer koşullarda ise başka bir görsel kullanılacak. -->
+
+<picture>
+  <source srcset="https://cdn.sanity.io/images/9kdepi1d/production/65c832d202a503b15d99e628f4313782f3ef50db-300x62.png" media="(min-width: 800px)">
+  
+  <img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" />
+</picture>
+<!-- 
+Tarayıcı, her bir source öğesini inceleyip eşleşme sağlar. Eşleşme bulunamazsa veya tarayıcı <picture> öğesini desteklemiyorsa, <img> öğesinin src URL'si seçilir. Seçilen görüntü daha sonra <img> öğesinin kapladığı alanda sunulur. --> -->
