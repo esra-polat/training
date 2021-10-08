@@ -1,0 +1,26 @@
+
+body {
+    background-color: #f8c555;
+    text-align: center;
+    position: relative;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    display: block;
+    font-family: 'Harry Potter', sans-serif;
+}
+
+
+.main {
+    border-image: border-box ;
+    border: solid 1px black;
+    padding: 100px;
+    margin: 155px;
+
+    background-color: palevioletred;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+    border-radius: 15px;
+    box-shadow: 3px 3px rgb(13, 13, 14);
+}

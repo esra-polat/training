@@ -11,3 +11,18 @@ let info = document.querySelector("#info")
 // userName.length > 0 ? userName : "Kullani Bilginiz Bulunamadi :("
 
 info.innerHTML = `${userName ? userName : "Kullani Bilginiz Bulunamadi :("}`
+
+let boolean;
+
+const isBooleanTrue = boolean ? true : false;
+
+console.log(isBooleanTrue)
+console.log(boolean)
+
+var money;
+var canBuy =
+    (money < 17) ? "Satın alamazsın.." :
+        (money > 30) ? "Satın alabilirsin.." :
+            "Para miktarını girmen gerekmektedir..";
+
+console.log(canBuy)
