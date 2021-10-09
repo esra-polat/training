@@ -3,9 +3,15 @@
 // https://developer.mozilla.org/en-US/docs/Web/Events
 
 let greeting = document.querySelector("#greeting")
+// greeting.addEventListener("click", function(){
+//     console.log("tiklandi")
+// })
+
 greeting.addEventListener("click", domClick)
+// greeting.addEventListener("mouseover", domClick)
 
 function domClick() {
     console.log("etkinlik denetlendi")
+    // console.log(this.innerHTML = "tiklandiginda degisti")
     this.style.color == "red" ? this.style.color = "black" : this.style.color = "red"
 }
