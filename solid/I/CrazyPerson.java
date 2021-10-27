@@ -3,7 +3,7 @@ package I;
 public class CrazyPerson implements BearPetter {
 
     public void petTheBear() {
-        //Good luck with that!
+        // Good luck with that!
     }
 }
 
