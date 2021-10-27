@@ -1,7 +1,5 @@
 package D;
 
-public interface Keyboard { }
-
 public class Windows98Machine {
 
     /* 
