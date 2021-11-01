@@ -1,4 +1,5 @@
 import java.util.Random;
+
 public class Obstacle {
 	private String name;
 	private int damage, award, health, maxNumber;
@@ -10,7 +11,7 @@ public class Obstacle {
 		this.health = health;
 		this.maxNumber = maxNumber;
 	}
-	
+
 	public int count() {
 		Random r = new Random();
 		return r.nextInt(this.maxNumber) + 1;

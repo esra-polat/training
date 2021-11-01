@@ -1,10 +1,10 @@
 
 public class Inventory {
-	private boolean water,food,firewood;
-	private String wName,aName;
-	private int damage,armor;
-	
-	Inventory(){
+	private boolean water, food, firewood;
+	private String wName, aName;
+	private int damage, armor;
+
+	Inventory() {
 		this.water = false;
 		this.food = false;
 		this.firewood = false;
@@ -69,6 +69,5 @@ public class Inventory {
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
-	
-	
+
 }

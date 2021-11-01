@@ -1,15 +1,13 @@
 
-public abstract class NormalLoc extends Location{
+public abstract class NormalLoc extends Location {
 
-	NormalLoc(Player player,String name) {
+	NormalLoc(Player player, String name) {
 		super(player);
 		this.name = name;
 	}
-	
 
 	public boolean getLocation() {
 		return true;
 	}
-	
-	
+
 }

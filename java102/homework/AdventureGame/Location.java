@@ -4,11 +4,11 @@ public abstract class Location {
 	protected Player player;
 	protected String name;
 	Scanner scan = new Scanner(System.in);
-	
-	Location(Player player){
+
+	Location(Player player) {
 		this.player = player;
 	}
-	
+
 	public abstract boolean getLocation();
 
 	public Player getPlayer() {
@@ -26,6 +26,5 @@ public abstract class Location {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }
